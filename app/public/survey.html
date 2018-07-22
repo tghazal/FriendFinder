@@ -264,29 +264,28 @@
 <script type="text/javascript">
 
     $(".submit").on("click", function (event) {
-
-
         event.preventDefault();
-
         $("#validate").text("");
         var name = $("#name").val().trim();
         var image = $("#image").val().trim();
-
+      //validae and check if any field is still empty then show msg to user 
         if (name === "" || image === "" || $("#select1").val() === "" || $("#select2").val() === "" || $("#select3").val() === "" || $("#select4").val() === "" || $("#select5").val() === "" || $("#select6").val() === "" || $("#select7").val() === "" || $("#select8").val() === "" || $("#select9").val() === "" || $("#select10").val() === "") {
             console.log("no data")
             $("#validate").text("Please fill out all fields before submitting!")
         }
-        else {
-
+        //if the user fill all the fields 
+        else
+         {
             $("#validate").text("");
             console.log($("#select1").val());
+            //create the object with all the data 
             var newFriend = {
                 name: $("#name").val().trim(),
                 image: $("#image").val().trim(),
                 scores: [$("#select1").val(), $("#select2").val(), $("#select3").val(), $("#select4").val(), $("#select5").val(), $("#select6").val(), $("#select7").val(), $("#select8").val(), $("#select9").val(), $("#select10").val()]
             }
             console.log(newFriend)
-
+            //ajax call to post the new data 
             $.post("/api/friends", newFriend, function (data) {
                 if (data) {
                     $("#modalBody").text(" Your closet friend is " + data.name);
@@ -296,7 +295,7 @@
 
                 }
             })
-
+            //clear all the fields
             $("#name").val("");
             $("#image").val("");
             $("#select1").val("");

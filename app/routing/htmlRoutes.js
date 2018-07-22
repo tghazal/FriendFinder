@@ -4,7 +4,7 @@ var router = express.Router();
 
 
 
-
+//use routers to route to survey page
   router.get("/survey", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/survey.html"));
   });
