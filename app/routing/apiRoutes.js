@@ -1,17 +1,19 @@
 
+var express = require("express");
 var friendsArray = require("../data/friends");
 var newFriend = [];
 
+var router = express.Router();
 
-module.exports = function (app) {
 
-    app.get("/api/friends", function (req, res) {
+
+   router.get("/api/friends", function (req, res) {
         res.json(friendsArray);
       
     })
 
 
-    app.post("/api/friends", function (req, res) {
+   router.post("/api/friends", function (req, res) {
 
         var data = req.body;
         //if friend array is emty send res message res.send("no other friends")
@@ -44,6 +46,7 @@ module.exports = function (app) {
     })
 
 
-}
 
 
+
+module.exports = router;
